@@ -27,13 +27,17 @@ class Ant:
 
 
 ant = Ant(field, pos=[field.shape[0] // 2, field.shape[1] // 2])  # place the ant to field center
-
+count = 0
 while True:
+    count += 1
     ant.run()
     if ant.x == X_SIZE or ant.y == Y_SIZE: break  # Checking the ant for reaching the border
     if ant.x == 0 or ant.y == 0: break  # Checking the ant for reaching the border
 
 newfield = ant.get_field()  # Getting a field modified by movement of ant
+print(f"Количество черных точек: {newfield.size - np.count_nonzero(newfield)}")  # display count black cells
+print(f"Количество шагов муравья: {count}")  # display count of ant steps
+
 newfield[newfield == 1] = -1  # Preparing field values to create contrasting Image
 
 Image.fromarray(newfield, mode='L').show()  # Create & Show Image
