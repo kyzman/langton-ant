@@ -31,6 +31,7 @@ ant = Ant(field, pos=[field.shape[0] // 2, field.shape[1] // 2])  # place the an
 while True:
     ant.run()
     if ant.x == X_SIZE or ant.y == Y_SIZE: break  # Checking the ant for reaching the border
+    if ant.x == 0 or ant.y == 0: break  # Checking the ant for reaching the border
 
 newfield = ant.get_field()  # Getting a field modified by movement of ant
 newfield[newfield == 1] = -1  # Preparing field values to create contrasting Image
